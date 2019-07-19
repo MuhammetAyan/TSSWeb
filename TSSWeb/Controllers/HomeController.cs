@@ -10,7 +10,11 @@ namespace TSSWeb.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            //Kullanıcı giriş yapmışsa
+            if (Request.IsAuthenticated)
+                return View();
+            else //Giriş Yapmamışsa
+                return RedirectToAction("Login", "Account");
         }
 
         public ActionResult About()
