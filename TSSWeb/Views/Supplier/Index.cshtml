@@ -1,0 +1,23 @@
+﻿@model IEnumerable<TSSWeb.Models.SupplierListItemModel>
+
+@{
+    ViewBag.Title = "Tedarikçi Sorgula";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-12">
+        <input class="form-control btn-outline-success" type="search" id="search" value="" placeholder="Tedarikçi Ara"/>
+        <hr />
+        <div class="card">
+            <div class="list-group list-group-flush">
+                @foreach (var item in Model)
+                {
+                    <a href="@Url.Action("Details", "Supplier", new {  id=item.ID  })" class="list-group-item">
+                        @item.SupplierName
+                    <span class="badge badge-dark">@item.BoughtCount</span>
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+</div>
